@@ -20,11 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.semestralna_praca.viewmodel.AssessmentViewModel
-import com.example.semestralna_praca.navigation.Screen
 
 
 @Composable
@@ -69,12 +69,12 @@ fun AssessmentScreen(
                         val results = viewModel.calculateCategoryScores()
                         // TODO: Save to Firestore
                         println("Final category results: $results")
-                        navController.navigate(Screen.Home.route) {
+                        navController.navigate("main") {
                             //popUpTo(Screen.Assessment.route) { inclusive = true }
                             viewModel.saveResultsToFirestore(
                                 onSuccess = {
-                                    navController.navigate(Screen.Home.route) {
-                                        popUpTo(Screen.Assessment.route) { inclusive = true }
+                                    navController.navigate("main") {
+                                        popUpTo("assessment") { inclusive = true }
                                     }
                                 },
                                 onError = { e ->

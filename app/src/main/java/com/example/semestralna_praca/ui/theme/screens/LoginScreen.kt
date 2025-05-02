@@ -24,7 +24,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.semestralna_praca.navigation.Screen
 import com.example.semestralna_praca.viewmodel.LoginViewModel
 
 @Composable
@@ -37,8 +36,8 @@ fun LoginScreen(navController: NavHostController, viewModel: LoginViewModel = vi
 
     LaunchedEffect(loginSuccess) {
         if (loginSuccess) {
-            navController.navigate(Screen.Home.route) {
-                popUpTo(Screen.Login.route) { inclusive = true }
+            navController.navigate("main") {
+                popUpTo("welcome") { inclusive = true }
             }
         }
     }

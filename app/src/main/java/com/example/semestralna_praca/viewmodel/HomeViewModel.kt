@@ -28,7 +28,7 @@ class HomeViewModel : ViewModel() {
         loadCompletedQuests()
     }
 
-    private fun loadUserStats() {
+    fun loadUserStats() {
         val uid = Firebase.auth.currentUser?.uid ?: return
         val docRef = Firebase.firestore.collection("users").document(uid)
 

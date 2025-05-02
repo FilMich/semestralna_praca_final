@@ -14,8 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.example.semestralna_praca.navigation.AppNavGraph
-import com.example.semestralna_praca.navigation.Screen
+import com.example.semestralna_praca.navigation.AuthNavGraph
 import com.example.semestralna_praca.ui.theme.Semestralna_pracaTheme
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -25,13 +24,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Semestralna_pracaTheme {
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    val navController = rememberNavController()
-                    val isLoggedIn = Firebase.auth.currentUser != null
-                    val startDest = if (isLoggedIn) Screen.Home.route else Screen.Welcome.route
-
-                    AppNavGraph(navController = navController, startDestination = startDest)
-                }
+                val navController = rememberNavController()
+                AuthNavGraph(navController = navController)
             }
         }
     }
